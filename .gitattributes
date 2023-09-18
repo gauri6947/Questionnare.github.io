@@ -1,2 +1,64 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+import random
+
+# Define the questions, options, and answer keys
+questions = [
+    "What is the capital of France?",
+    "Which planet is known as the Red Planet?",
+    "What is the powerhouse of the cell?",
+    "Who wrote 'Romeo and Juliet'?",
+    "What is the chemical symbol for water?",
+    "Which gas do plants absorb from the atmosphere?",
+    "What is the largest mammal in the world?",
+    "Who painted the Mona Lisa?",
+    "Which gas makes up the majority of Earth's atmosphere?",
+    "What is the chemical symbol for gold?",
+    "What is the boiling point of water in Celsius?",
+    "Who was the first person to step on the moon?",
+    "What is the hardest natural substance on Earth?",
+    "Which element has the atomic number 79?",
+    "Who is known as the 'Father of Computer Science'?"
+]
+
+options = [
+    ['A) Madrid', 'B) Paris', 'C) Rome', 'D) Berlin'],
+    ['A) Mars', 'B) Jupiter', 'C) Venus', 'D) Saturn'],
+    ['A) Mitochondria', 'B) Nucleus', 'C) Ribosome', 'D) Chloroplast'],
+    ['A) Charles Dickens', 'B) William Shakespeare', 'C) Jane Austen', 'D) J.K. Rowling'],
+    ['A) H2O', 'B) CO2', 'C) O2', 'D) N2'],
+    ['A) Oxygen', 'B) Carbon Dioxide', 'C) Nitrogen', 'D) Hydrogen'],
+    ['A) Elephant', 'B) Blue Whale', 'C) Giraffe', 'D) Lion'],
+    ['A) Leonardo da Vinci', 'B) Vincent van Gogh', 'C) Pablo Picasso', 'D) Michelangelo'],
+    ['A) Oxygen', 'B) Carbon Dioxide', 'C) Nitrogen', 'D) Hydrogen'],
+    ['A) Au', 'B) Ag', 'C) Fe', 'D) Cu'],
+    ['A) 100°C', 'B) 0°C', 'C) -10°C', 'D) 50°C'],
+    ['A) Neil Armstrong', 'B) Yuri Gagarin', 'C) Buzz Aldrin', 'D) Michael Collins'],
+    ['A) Diamond', 'B) Quartz', 'C) Ruby', 'D) Sapphire'],
+    ['A) Gold', 'B) Silver', 'C) Copper', 'D) Platinum'],
+    ['A) Alan Turing', 'B) Charles Babbage', 'C) Ada Lovelace', 'D) Grace Hopper']
+]
+
+answer_keys = ['B', 'A', 'A', 'B', 'A', 'B', 'B', 'A', 'C', 'A', 'A', 'A', 'A', 'A', 'A']
+
+winnings = 0  # Starting winnings
+
+for i in range(15):
+    # Select a random question
+    index = random.randint(0, len(questions)-1)
+    question = questions.pop(index)
+    option = options.pop(index)
+    answer_key = answer_keys.pop(index)
+    
+    print(f"\nQuestion {i+1}: {question}")
+    for opt in option:
+        print(opt)
+    
+    user_answer = input("\nEnter your answer (A, B, C, or D): ")
+    
+    if user_answer.upper() == answer_key:
+        winnings += 2**i
+        print(f"\nCorrect! Your winnings are now ${winnings}")
+    else:
+        print(f"\nIncorrect! You won ${winnings}")
+        break
